@@ -1,0 +1,79 @@
+﻿@model IEnumerable<StackSearch.Models.Post>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Search your queries</h1>
+    <p>Search Questions or Answers</p>
+</div>
+
+<div class="text-center">
+    <div>
+        <form asp-action="showSearchResult">
+            <div class="form-group">
+                <label for="searchPhrase" class="control-label"></label>
+                <input name="searchPhrase" class="form-control" />
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div class="text-center">
+    <h2 class="display-6">Results</h2>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User Info
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Total # of Votes
+            </th>
+            <th>
+                Total # of Answers
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <form asp-action="ViewUser">
+                        <input type="hidden" name="postOwnerId" class="form-control" value="@item.OwnerUserId" />
+                        <input type="submit" value="View User" class="btn btn-success"/>
+                    </form>
+                </td>
+                <td>
+                    @Html.Raw(item.Title)
+                </td>
+                <td>
+                    @Html.Raw(item.Body.Substring(0, item.Body.Length > 140 ? 140 : item.Body.Length))
+                </td>
+                <td>
+                    @Html.Raw(item.Score)
+                </td>
+                <td>
+                    @Html.Raw(item.AnswerCount)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

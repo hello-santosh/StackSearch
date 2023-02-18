@@ -1,0 +1,34 @@
+﻿@model IEnumerable<StackSearch.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>User Info</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User Display Name
+            </th>
+            <th>
+                Reputation
+            </th>
+            <th></th>
+        </tr>
+     </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>
+                    @Html.Raw(item.DisplayName)
+                    </td>
+                    <td>
+                    @Html.Raw(item.Reputation)
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

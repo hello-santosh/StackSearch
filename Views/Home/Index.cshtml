@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Search your queries</h1>
+    <p>Search Questions or Answers</p>
+</div>
+
+<div class="text-center">
+    <div>
+        <form asp-action="showSearchResult">
+            <div class="form-group">
+                <label for="searchPhrase" class="control-label"></label>
+                <input name="searchPhrase" class="form-control" />
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
